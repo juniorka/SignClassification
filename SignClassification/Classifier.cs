@@ -59,7 +59,7 @@ namespace SignClassification
         {
             //Определяем координаты устойчивой точки
             FindStablePoint2(image.Brightness);
-            LogStr.AppendLine("Количество итераций при поске устойчивой точки: " + _stablePointList.Count);
+            LogStr.AppendLine("Количество итераций при поиске устойчивой точки: " + _stablePointList.Count);
             LogStr.AppendLine("Максимальное значение в векторе устойчивой точки: " + Math.Round(StablePoint.Max(), 3));
             LogStr.AppendLine("Минимальное значение в векторе устойчивой точки: " + Math.Round(StablePoint.Min(), 3));
             //Определяем коэффициент сжатия отображения K 
@@ -263,6 +263,5 @@ namespace SignClassification
                 }
             }
         }
-
     }
 }

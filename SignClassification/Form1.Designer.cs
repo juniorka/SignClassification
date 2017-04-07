@@ -46,30 +46,32 @@
             this.textBoxMinMu = new System.Windows.Forms.TextBox();
             this.textBoxLog = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.maskedTextBoxMu = new System.Windows.Forms.MaskedTextBox();
             this.btnMuRun = new System.Windows.Forms.Button();
             this.btnMuLeft = new System.Windows.Forms.Button();
             this.btnMuRight = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIntervals)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureStablePoint)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonLoadImage
@@ -109,7 +111,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1478, 276);
+            this.panel2.Size = new System.Drawing.Size(1478, 254);
             this.panel2.TabIndex = 7;
             // 
             // groupBox1
@@ -219,16 +221,149 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dataGridView2);
-            this.panel1.Controls.Add(this.dataGridView3);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 276);
+            this.panel1.Location = new System.Drawing.Point(0, 254);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1478, 570);
+            this.panel1.Size = new System.Drawing.Size(1478, 592);
             this.panel1.TabIndex = 6;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView3, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView2, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1478, 428);
+            this.tableLayoutPanel1.TabIndex = 10;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.label6);
+            this.flowLayoutPanel1.Controls.Add(this.maskedTextBoxMu);
+            this.flowLayoutPanel1.Controls.Add(this.btnMuRun);
+            this.flowLayoutPanel1.Controls.Add(this.btnMuLeft);
+            this.flowLayoutPanel1.Controls.Add(this.btnMuRight);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(987, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(488, 39);
+            this.flowLayoutPanel1.TabIndex = 11;
+            this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(246, 41);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Класстеризация при масштабе";
+            // 
+            // maskedTextBoxMu
+            // 
+            this.maskedTextBoxMu.Location = new System.Drawing.Point(255, 3);
+            this.maskedTextBoxMu.Mask = "0.000";
+            this.maskedTextBoxMu.Name = "maskedTextBoxMu";
+            this.maskedTextBoxMu.Size = new System.Drawing.Size(68, 26);
+            this.maskedTextBoxMu.TabIndex = 18;
+            // 
+            // btnMuRun
+            // 
+            this.btnMuRun.BackgroundImage = global::SignClassification.Properties.Resources.media_play_green;
+            this.btnMuRun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMuRun.Location = new System.Drawing.Point(329, 3);
+            this.btnMuRun.Name = "btnMuRun";
+            this.btnMuRun.Size = new System.Drawing.Size(31, 35);
+            this.btnMuRun.TabIndex = 17;
+            this.btnMuRun.UseVisualStyleBackColor = true;
+            this.btnMuRun.Click += new System.EventHandler(this.btnMuRun_Click);
+            // 
+            // btnMuLeft
+            // 
+            this.btnMuLeft.BackgroundImage = global::SignClassification.Properties.Resources.arrow1600_2;
+            this.btnMuLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMuLeft.Location = new System.Drawing.Point(366, 3);
+            this.btnMuLeft.Name = "btnMuLeft";
+            this.btnMuLeft.Size = new System.Drawing.Size(31, 35);
+            this.btnMuLeft.TabIndex = 16;
+            this.btnMuLeft.UseVisualStyleBackColor = true;
+            this.btnMuLeft.Click += new System.EventHandler(this.btnMuLeft_Click);
+            // 
+            // btnMuRight
+            // 
+            this.btnMuRight.BackgroundImage = global::SignClassification.Properties.Resources.arrow1600;
+            this.btnMuRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMuRight.Location = new System.Drawing.Point(403, 3);
+            this.btnMuRight.Name = "btnMuRight";
+            this.btnMuRight.Size = new System.Drawing.Size(31, 35);
+            this.btnMuRight.TabIndex = 15;
+            this.btnMuRight.UseVisualStyleBackColor = true;
+            this.btnMuRight.Click += new System.EventHandler(this.btnMuRight_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(486, 45);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Класстеризация по max(∆H/∆μ)";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(495, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(486, 45);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Класстеризация по maxH";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 48);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(486, 377);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView3.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView3.Location = new System.Drawing.Point(987, 48);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridView3.RowTemplate.Height = 28;
+            this.dataGridView3.Size = new System.Drawing.Size(488, 377);
+            this.dataGridView3.TabIndex = 9;
+            this.dataGridView3.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView3_RowPrePaint);
             // 
             // dataGridView2
             // 
@@ -236,55 +371,28 @@
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(523, 35);
+            this.dataGridView2.Location = new System.Drawing.Point(495, 48);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(398, 339);
+            this.dataGridView2.Size = new System.Drawing.Size(486, 377);
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView2_RowPrePaint);
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView3.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dataGridView3.Location = new System.Drawing.Point(921, 35);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataGridView3.RowTemplate.Height = 28;
-            this.dataGridView3.Size = new System.Drawing.Size(557, 339);
-            this.dataGridView3.TabIndex = 9;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 35);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(523, 339);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.chart1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 374);
+            this.panel3.Location = new System.Drawing.Point(0, 428);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1478, 196);
+            this.panel3.Size = new System.Drawing.Size(1478, 164);
             this.panel3.TabIndex = 1;
             // 
             // chart1
             // 
             chartArea2.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea2);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
             legend2.Name = "Legend1";
             this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(0, 0);
@@ -295,100 +403,9 @@
             series2.Legend = "Legend1";
             series2.Name = "Энтропии";
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(1478, 196);
+            this.chart1.Size = new System.Drawing.Size(1478, 164);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.maskedTextBoxMu);
-            this.panel4.Controls.Add(this.btnMuRun);
-            this.panel4.Controls.Add(this.btnMuLeft);
-            this.panel4.Controls.Add(this.btnMuRight);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(100, 0, 50, 0);
-            this.panel4.Size = new System.Drawing.Size(1478, 35);
-            this.panel4.TabIndex = 16;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(546, 0);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(15, 5, 0, 0);
-            this.label4.Size = new System.Drawing.Size(216, 25);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Класстеризация по maxH";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label6.Location = new System.Drawing.Point(1021, 0);
-            this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label6.Size = new System.Drawing.Size(246, 25);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Класстеризация при масштабе";
-            // 
-            // maskedTextBoxMu
-            // 
-            this.maskedTextBoxMu.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maskedTextBoxMu.Location = new System.Drawing.Point(1267, 0);
-            this.maskedTextBoxMu.Mask = "0.000";
-            this.maskedTextBoxMu.Name = "maskedTextBoxMu";
-            this.maskedTextBoxMu.Size = new System.Drawing.Size(68, 26);
-            this.maskedTextBoxMu.TabIndex = 18;
-            // 
-            // btnMuRun
-            // 
-            this.btnMuRun.BackgroundImage = global::SignClassification.Properties.Resources.media_play_green;
-            this.btnMuRun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnMuRun.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMuRun.Location = new System.Drawing.Point(1335, 0);
-            this.btnMuRun.Name = "btnMuRun";
-            this.btnMuRun.Size = new System.Drawing.Size(31, 35);
-            this.btnMuRun.TabIndex = 17;
-            this.btnMuRun.UseVisualStyleBackColor = true;
-            // 
-            // btnMuLeft
-            // 
-            this.btnMuLeft.BackgroundImage = global::SignClassification.Properties.Resources.arrow1600_2;
-            this.btnMuLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnMuLeft.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMuLeft.Location = new System.Drawing.Point(1366, 0);
-            this.btnMuLeft.Name = "btnMuLeft";
-            this.btnMuLeft.Size = new System.Drawing.Size(31, 35);
-            this.btnMuLeft.TabIndex = 16;
-            this.btnMuLeft.UseVisualStyleBackColor = true;
-            // 
-            // btnMuRight
-            // 
-            this.btnMuRight.BackgroundImage = global::SignClassification.Properties.Resources.arrow1600;
-            this.btnMuRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnMuRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMuRight.Location = new System.Drawing.Point(1397, 0);
-            this.btnMuRight.Name = "btnMuRight";
-            this.btnMuRight.Size = new System.Drawing.Size(31, 35);
-            this.btnMuRight.TabIndex = 15;
-            this.btnMuRight.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label3.Location = new System.Drawing.Point(100, 0);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(0, 5, 200, 0);
-            this.label3.Size = new System.Drawing.Size(446, 25);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Класстеризация по max(∆H/∆μ)";
             // 
             // Form1
             // 
@@ -406,13 +423,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIntervals)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureStablePoint)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.panel1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -439,14 +459,15 @@
         private System.Windows.Forms.RadioButton rBNo;
         private System.Windows.Forms.RadioButton rBYes;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxMu;
         private System.Windows.Forms.Button btnMuRun;
         private System.Windows.Forms.Button btnMuLeft;
         private System.Windows.Forms.Button btnMuRight;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

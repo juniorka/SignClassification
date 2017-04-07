@@ -85,7 +85,7 @@ namespace SignClassification
                     k++;
                 }
             }
-            //Bmp.Save("d:\\обучение\\Распознавание знаков\\signs\\знаки\\image2.bmp");
+            //Bmp.Save("d:\\обучение\\Распознавание знаков\\signs\\искуственные знаки\\image2.bmp");
             return bmp;
         }
     }

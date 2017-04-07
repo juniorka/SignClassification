@@ -49,12 +49,11 @@ namespace SignClassification
             textBoxLog.Text += classifier.LogStr;
             im = new SignImage();
             pictureStablePoint.Image = im.CreateImage(classifier.StablePoint);
-            Graphics g = Graphics.FromHwnd(pictureBoxIntervals.Handle);
-            //DrowIntervals(classifier.Split.Clasters,g);
+
             pictureBoxIntervals.BackColor = Color.White;
             pictureBoxIntervals.Visible = true;
             pictureBoxIntervals.Paint += this.pictureBoxIntervals_Paint;
-            //pictureBoxIntervals.Invalidate();
+
         }
 
         private void buttonCalc_Click(object sender, EventArgs e)
@@ -173,7 +172,7 @@ namespace SignClassification
 
         private void DrowIntervals(List<Claster> clasters, Graphics gr)
         {
-            pictureBoxIntervals.Width = (int)(10* Math.Round(clasters[clasters.Count - 1].Interval[1]));
+            pictureBoxIntervals.Width = (int)(10+10* Math.Round(clasters[clasters.Count - 1].Interval[1]));
             Pen pen = new Pen(Color.Black);
             Font fn = new Font(FontFamily.GenericMonospace, 6);
             Brush br = new SolidBrush(Color.Black);
@@ -277,6 +276,15 @@ namespace SignClassification
             m -= 0.1;
             maskedTextBoxMu.Text = m.ToString();
             btnMuRun_Click(sender, e);
+        }
+
+        private void dataGridView3_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            object head = this.dataGridView3.Rows[e.RowIndex].HeaderCell.Value;
+            if (head == null ||
+               !head.Equals((e.RowIndex + 1).ToString()))
+                this.dataGridView3.Rows[e.RowIndex].HeaderCell.Value =
+                   (e.RowIndex + 1).ToString();
         }
     }
 }
