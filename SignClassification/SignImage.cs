@@ -71,10 +71,12 @@ namespace SignClassification
             }
         }
 
-        public Bitmap CreateImage(double[] br)
+        public Bitmap CreateImage(double[] brightness)
         {
             Bitmap bmp = new Bitmap("d:\\обучение\\Распознавание знаков\\signs\\знаки\\image.bmp");
             int k = 0;
+            double[] br = new double[brightness.Length];
+            Array.Copy(brightness,br,brightness.Length);
             LinearNormalization(br.Max(), br.Min(), ref br);
             for (int i = 0; i < bmp.Width; i++)
             {
@@ -85,7 +87,7 @@ namespace SignClassification
                     k++;
                 }
             }
-            //Bmp.Save("d:\\обучение\\Распознавание знаков\\signs\\искуственные знаки\\image2.bmp");
+            //bmp.Save("d:\\обучение\\Распознавание знаков\\signs\\искуственные знаки\\image2.bmp");
             return bmp;
         }
     }

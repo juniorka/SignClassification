@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SignClassification
@@ -43,8 +44,9 @@ namespace SignClassification
                     collectionList.Add(new SignImage(file));
                 }
             }
+            double m = FindBetterStablePoint();
             //Генерируем новые W и B или используем из файла
-            classifier = rBNo.Checked == true ? new Classifier(collectionList[0]) : new Classifier(collectionList[0], Read2DArray("w.txt"), ReadArray("b.txt"));
+            classifier = rBNo.Checked == true ? new Classifier(collectionList[0]) : new Classifier(collectionList[0], Read2DArray("w.txt"), ReadArray("b.txt"),m);
 
             textBoxLog.Text += classifier.LogStr;
             im = new SignImage();
@@ -54,6 +56,66 @@ namespace SignClassification
             pictureBoxIntervals.Visible = true;
             pictureBoxIntervals.Paint += this.pictureBoxIntervals_Paint;
 
+        }
+
+        private double FindBetterStablePoint()
+        {
+            List<Split> stableSplits = new List<Split>();
+            double[,] w = Read2DArray("w.txt");
+            double[] b = ReadArray("b.txt");
+            double m = double.Parse(textBoxMinM.Text);
+            double minM = m;
+            int j = 0;
+            const double step = 0.05;
+            double maxM = double.Parse(textBoxMaxM.Text);
+            List<double> x = new List<double>();
+            while (m < maxM + step / 2.0)
+            {
+                x.Add(m);
+                m += step;
+            }
+            //Формируем класстеры, меняя масштаб данных
+
+            Parallel.ForEach(x, (i) =>
+            {
+                classifier = new Classifier(collectionList[0], w, b, i);
+                Split split = new Split(classifier.Split.Clasters, 1);
+                stableSplits.Add(split);
+                foreach (var image in collectionList)
+                {
+                    image.Distance = classifier.EuclideanDistance(image.Brightness);
+                    foreach (var claster in split.Clasters)
+                    {
+                        if (image.Distance <= claster.Interval[1])
+                        {
+                            claster.BmpList.Add(image);
+                            break;
+                        }
+                    }
+                }
+            });
+            double[] y = new double[stableSplits.Count];
+            double buf = 0, splitNumber = 0;
+            //Вычисляем наибольший перепад энтропий
+            for (int i = 0; i < stableSplits.Count; i++)
+            {
+                stableSplits[i].GenerateH(collectionList.Count);
+                y[i] = stableSplits[i].H;
+                if (buf < stableSplits[i].H)
+                {
+                    buf = stableSplits[i].H;
+                    splitNumber = i;
+                }
+            }
+            chart2.ChartAreas[0].AxisX.Minimum = x[0];
+            chart2.ChartAreas[0].AxisX.Maximum = x[x.Count-1];
+            chart2.ChartAreas[0].AxisX.MajorGrid.Interval = step;
+            // Добавляем вычисленные значения в график
+            chart2.Series[0].Points.DataBindXY(x, y);
+
+            m = minM + splitNumber * step;
+            textBoxLogSP.Text += "Максимальная энтропия достигается при масштабе " + m + Environment.NewLine;
+            return m;
         }
 
         private void buttonCalc_Click(object sender, EventArgs e)
@@ -69,7 +131,7 @@ namespace SignClassification
             const double step = 0.05;
             //Формируем класстеры, меняя масштаб данных
             double maxM = double.Parse(textBoxMaxMu.Text);
-            while (m < maxM+step/2.0)
+            while(m <= maxM+step/2.0)
             {
                 splitsList.Add(new Split(classifier.Split.Clasters, m));
                 foreach (var image in collectionList)
@@ -103,7 +165,7 @@ namespace SignClassification
                 splitsList[i].GenerateH(collectionList.Count);
                 x.Add(splitsList[i].scale);
                 y[i] = splitsList[i].H;
-                var buf = Math.Abs(splitsList[i].H - splitsList[i-1].H)/ (splitsList[i].scale - splitsList[i-1].scale);
+                var buf = Math.Abs(splitsList[i].H - splitsList[i-1].H)/(splitsList[i].scale - splitsList[i-1].scale);
                 if (buf < maxDH) continue;
                 maxDH = buf;
                 if (splitsList[i].H < splitsList[i-1].H) splitNumber = i;
@@ -115,7 +177,7 @@ namespace SignClassification
             // Добавляем вычисленные значения в график
             chart1.Series[0].Points.DataBindXY(x, y);
 
-            textBoxLog.Text += "Максимальный перепад энтропий достигается при " + splitsList[splitNumber].scale;
+            textBoxLog.Text += "Максимальный перепад энтропий достигается при " + splitsList[splitNumber].scale + Environment.NewLine;
 
             // Выводим найденное разбиение на кластеры
             foreach (var claster in splitsList[splitNumber].Clasters)
@@ -172,7 +234,7 @@ namespace SignClassification
 
         private void DrowIntervals(List<Claster> clasters, Graphics gr)
         {
-            pictureBoxIntervals.Width = (int)(10+10* Math.Round(clasters[clasters.Count - 1].Interval[1]));
+            pictureBoxIntervals.Width = (int)(50+10* Math.Round(clasters[clasters.Count - 1].Interval[1]));
             Pen pen = new Pen(Color.Black);
             Font fn = new Font(FontFamily.GenericMonospace, 6);
             Brush br = new SolidBrush(Color.Black);
@@ -193,8 +255,8 @@ namespace SignClassification
 
         private void pictureBoxIntervals_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-            DrowIntervals(classifier.Split.Clasters, g);
+            e.Graphics.Clear(Color.White);
+            DrowIntervals(classifier.Split.Clasters, e.Graphics);
         }
 
         static double[,] Read2DArray(string path)
@@ -285,6 +347,34 @@ namespace SignClassification
                !head.Equals((e.RowIndex + 1).ToString()))
                 this.dataGridView3.Rows[e.RowIndex].HeaderCell.Value =
                    (e.RowIndex + 1).ToString();
+        }
+
+        private void btnRunK_Click(object sender, EventArgs e)
+        {
+            classifier.K = Double.Parse(maskedTextBoxK.Text);
+            classifier.CreateIntervals();
+            textBoxLog.Text += "Коэффициент сжатия отображения K: " + Math.Round(classifier.K, 5)+ Environment.NewLine;
+            textBoxLog.Text += "Количество диапазонов эвклидовых расстояний: " + classifier.Split.Clasters.Count+ Environment.NewLine;
+
+            //pictureBoxIntervals.Width = (int)(50 + 10 * Math.Round(classifier.Split.Clasters[classifier.Split.Clasters.Count - 1].Interval[1]));
+            pictureBoxIntervals_Paint(sender, new PaintEventArgs(pictureBoxIntervals.CreateGraphics(),pictureBoxIntervals.Bounds));
+
+        }
+
+        private void btnKRight_Click(object sender, EventArgs e)
+        {
+            double k = Double.Parse(maskedTextBoxK.Text);
+            k += 0.005;
+            maskedTextBoxMu.Text = k.ToString();
+            btnRunK_Click(sender, e);
+        }
+
+        private void btnKLeft_Click(object sender, EventArgs e)
+        {
+            double k = Double.Parse(maskedTextBoxK.Text);
+            k -= 0.005;
+            maskedTextBoxMu.Text = k.ToString();
+            btnRunK_Click(sender, e);
         }
     }
 }

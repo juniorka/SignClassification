@@ -19,7 +19,6 @@ namespace SignClassification
         public Split Split;
         private int M, N;
         public double K;
-        private SignImage im;
 
         public StringBuilder LogStr { get; }
 
@@ -38,12 +37,12 @@ namespace SignClassification
             LogStr = new StringBuilder();
             //Генерируем случайные значения элементов Wmn матрицы M х N
             LogStr.AppendLine("Сумма квад ратов матрицы весов Wmn: " + Math.Round(GenerateWB(), 3));
-            StartClassification(image);
+            StartClassification(image,1);
             Write2DArray("w.txt", W);
             WriteArray("b.txt", B);
         }
 
-        public Classifier(SignImage image, double[,] W, double[] B)
+        public Classifier(SignImage image, double[,] W, double[] B, double m)
         {
             M = image.Bmp.Width;
             N = image.Bmp.Height;
@@ -52,20 +51,20 @@ namespace SignClassification
             LogStr = new StringBuilder();
             //Генерируем случайные значения элементов Wmn матрицы M х N
             LogStr.AppendLine("Сумма квадратов матрицы весов Wmn: " + Math.Round(CheckW(), 3));
-            StartClassification(image);
+            StartClassification(image,m);
         }
 
-        private void StartClassification(SignImage image)
+        private void StartClassification(SignImage image, double m)
         {
             //Определяем координаты устойчивой точки
-            FindStablePoint2(image.Brightness);
+            FindStablePoint2(image.Brightness,m);
             LogStr.AppendLine("Количество итераций при поиске устойчивой точки: " + _stablePointList.Count);
             LogStr.AppendLine("Максимальное значение в векторе устойчивой точки: " + Math.Round(StablePoint.Max(), 3));
             LogStr.AppendLine("Минимальное значение в векторе устойчивой точки: " + Math.Round(StablePoint.Min(), 3));
             //Определяем коэффициент сжатия отображения K 
             GenerateK();
             LogStr.AppendLine("Коэффициент сжатия отображения K: " + Math.Round(K, 5));
-            CreateIntervals(image);
+            CreateIntervals();
             LogStr.AppendLine("Количество диапазонов эвклидовых расстояний: " + Split.Clasters.Count);
         }
 
@@ -175,7 +174,7 @@ namespace SignClassification
                 _stablePointList.Add(buf.Clone() as double[]);
             }
         }
-        private void FindStablePoint2(double[] u)
+        private void FindStablePoint2(double[] u, double m)
         {
             _stablePointList = new List<double[]>();
             double[] buf = new double[M * N];
@@ -194,7 +193,7 @@ namespace SignClassification
                     {
                         _stablePoint[i] += W[i, j] * buf[j];
                     }
-                    _stablePoint[i] += B[i];
+                    _stablePoint[i] = m * _stablePoint[i] + B[i];
                 }
                 );
                 double dis = EuclideanDistance(buf);
@@ -217,11 +216,10 @@ namespace SignClassification
 
         private void GenerateK()
         {
-            K=new double();
-            K = Math.Pow(EuclideanDistance(_stablePointList[_stablePointList.Count-11]) / EuclideanDistance(_stablePointList[3]), (double)1/(_stablePointList.Count - 11 - 3));
+            K = Math.Pow(EuclideanDistance(_stablePointList[13]) / EuclideanDistance(_stablePointList[3]), (double)1/(13 - 3));
         }
 
-        private void CreateIntervals(SignImage image)
+        public void CreateIntervals()
         {
             Split = new Split();
             Split.Clasters.Add(new Claster(0, 10E-6 / K));
