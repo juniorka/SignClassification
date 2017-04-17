@@ -28,14 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonSP = new System.Windows.Forms.Button();
+            this.groupBoxH = new System.Windows.Forms.GroupBox();
+            this.radioButtonMaxDH = new System.Windows.Forms.RadioButton();
+            this.radioButtonMaxH = new System.Windows.Forms.RadioButton();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.textBoxLogSP = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rBNo = new System.Windows.Forms.RadioButton();
@@ -47,6 +52,21 @@
             this.textBoxMaxM = new System.Windows.Forms.TextBox();
             this.textBoxMinM = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.maskedTextBoxMu = new System.Windows.Forms.MaskedTextBox();
+            this.btnMuRun = new System.Windows.Forms.Button();
+            this.btnMuLeft = new System.Windows.Forms.Button();
+            this.btnMuRight = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
@@ -63,30 +83,13 @@
             this.textBoxMinMu = new System.Windows.Forms.TextBox();
             this.textBoxLog = new System.Windows.Forms.TextBox();
             this.buttonCalc = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.maskedTextBoxMu = new System.Windows.Forms.MaskedTextBox();
-            this.btnMuRun = new System.Windows.Forms.Button();
-            this.btnMuLeft = new System.Windows.Forms.Button();
-            this.btnMuRight = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBoxH.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIntervals)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureStablePoint)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -95,7 +98,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIntervals)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureStablePoint)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -111,15 +118,12 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.flowLayoutPanel3);
+            this.tabPage1.Controls.Add(this.buttonSP);
+            this.tabPage1.Controls.Add(this.groupBoxH);
             this.tabPage1.Controls.Add(this.chart2);
             this.tabPage1.Controls.Add(this.textBoxLogSP);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.buttonLoadImage);
             this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.textBoxMaxM);
-            this.tabPage1.Controls.Add(this.textBoxMinM);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -129,20 +133,82 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.buttonLoadImage_Click);
             // 
+            // buttonSP
+            // 
+            this.buttonSP.Location = new System.Drawing.Point(879, 179);
+            this.buttonSP.Name = "buttonSP";
+            this.buttonSP.Size = new System.Drawing.Size(216, 32);
+            this.buttonSP.TabIndex = 33;
+            this.buttonSP.Text = "Расчет";
+            this.buttonSP.UseVisualStyleBackColor = true;
+            this.buttonSP.Click += new System.EventHandler(this.buttonSP_Click);
+            // 
+            // groupBoxH
+            // 
+            this.groupBoxH.Controls.Add(this.radioButtonMaxDH);
+            this.groupBoxH.Controls.Add(this.radioButtonMaxH);
+            this.groupBoxH.Location = new System.Drawing.Point(879, 115);
+            this.groupBoxH.Name = "groupBoxH";
+            this.groupBoxH.Size = new System.Drawing.Size(216, 55);
+            this.groupBoxH.TabIndex = 32;
+            this.groupBoxH.TabStop = false;
+            this.groupBoxH.Text = "Использовать";
+            // 
+            // radioButtonMaxDH
+            // 
+            this.radioButtonMaxDH.AutoSize = true;
+            this.radioButtonMaxDH.Location = new System.Drawing.Point(116, 26);
+            this.radioButtonMaxDH.Name = "radioButtonMaxDH";
+            this.radioButtonMaxDH.Size = new System.Drawing.Size(87, 24);
+            this.radioButtonMaxDH.TabIndex = 14;
+            this.radioButtonMaxDH.Text = "maxDH";
+            this.radioButtonMaxDH.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMaxH
+            // 
+            this.radioButtonMaxH.AutoSize = true;
+            this.radioButtonMaxH.Checked = true;
+            this.radioButtonMaxH.Location = new System.Drawing.Point(7, 26);
+            this.radioButtonMaxH.Name = "radioButtonMaxH";
+            this.radioButtonMaxH.Size = new System.Drawing.Size(75, 24);
+            this.radioButtonMaxH.TabIndex = 0;
+            this.radioButtonMaxH.TabStop = true;
+            this.radioButtonMaxH.Text = "maxH";
+            this.radioButtonMaxH.UseVisualStyleBackColor = true;
+            // 
+            // chart2
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            this.chart2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
+            this.chart2.Location = new System.Drawing.Point(3, 650);
+            this.chart2.Name = "chart2";
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Энтропии";
+            this.chart2.Series.Add(series1);
+            this.chart2.Size = new System.Drawing.Size(1494, 164);
+            this.chart2.TabIndex = 31;
+            this.chart2.Text = "chart2";
+            // 
             // textBoxLogSP
             // 
-            this.textBoxLogSP.Location = new System.Drawing.Point(271, 48);
+            this.textBoxLogSP.Location = new System.Drawing.Point(271, 51);
             this.textBoxLogSP.Multiline = true;
             this.textBoxLogSP.Name = "textBoxLogSP";
             this.textBoxLogSP.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLogSP.Size = new System.Drawing.Size(582, 157);
+            this.textBoxLogSP.Size = new System.Drawing.Size(582, 166);
             this.textBoxLogSP.TabIndex = 30;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rBNo);
             this.groupBox1.Controls.Add(this.rBYes);
-            this.groupBox1.Location = new System.Drawing.Point(12, 48);
+            this.groupBox1.Location = new System.Drawing.Point(3, 67);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(216, 55);
             this.groupBox1.TabIndex = 29;
@@ -173,7 +239,7 @@
             // 
             // buttonLoadImage
             // 
-            this.buttonLoadImage.Location = new System.Drawing.Point(8, 173);
+            this.buttonLoadImage.Location = new System.Drawing.Point(3, 128);
             this.buttonLoadImage.Name = "buttonLoadImage";
             this.buttonLoadImage.Size = new System.Drawing.Size(221, 32);
             this.buttonLoadImage.TabIndex = 28;
@@ -194,7 +260,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 144);
+            this.label9.Location = new System.Drawing.Point(3, 32);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(123, 20);
             this.label9.TabIndex = 25;
@@ -203,15 +269,15 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 112);
+            this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(116, 20);
+            this.label10.Size = new System.Drawing.Size(124, 20);
             this.label10.TabIndex = 24;
-            this.label10.Text = "Мин. масштаб";
+            this.label10.Text = "Мин. масштаб  ";
             // 
             // textBoxMaxM
             // 
-            this.textBoxMaxM.Location = new System.Drawing.Point(137, 141);
+            this.textBoxMaxM.Location = new System.Drawing.Point(132, 35);
             this.textBoxMaxM.Name = "textBoxMaxM";
             this.textBoxMaxM.Size = new System.Drawing.Size(91, 26);
             this.textBoxMaxM.TabIndex = 23;
@@ -219,7 +285,7 @@
             // 
             // textBoxMinM
             // 
-            this.textBoxMinM.Location = new System.Drawing.Point(137, 109);
+            this.textBoxMinM.Location = new System.Drawing.Point(133, 3);
             this.textBoxMinM.Name = "textBoxMinM";
             this.textBoxMinM.Size = new System.Drawing.Size(91, 26);
             this.textBoxMinM.TabIndex = 22;
@@ -236,171 +302,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Результаты";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.flowLayoutPanel2);
-            this.panel2.Controls.Add(this.pictureBoxIntervals);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.pictureStablePoint);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.textBoxMaxMu);
-            this.panel2.Controls.Add(this.textBoxMinMu);
-            this.panel2.Controls.Add(this.textBoxLog);
-            this.panel2.Controls.Add(this.buttonCalc);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1494, 248);
-            this.panel2.TabIndex = 9;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.Controls.Add(this.label7);
-            this.flowLayoutPanel2.Controls.Add(this.maskedTextBoxK);
-            this.flowLayoutPanel2.Controls.Add(this.btnRunK);
-            this.flowLayoutPanel2.Controls.Add(this.btnKLeft);
-            this.flowLayoutPanel2.Controls.Add(this.btnKRight);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(978, 99);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(473, 41);
-            this.flowLayoutPanel2.TabIndex = 14;
-            this.flowLayoutPanel2.WrapContents = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label7.Location = new System.Drawing.Point(3, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(282, 41);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Задать масштабный коэффициент";
-            // 
-            // maskedTextBoxK
-            // 
-            this.maskedTextBoxK.Location = new System.Drawing.Point(291, 3);
-            this.maskedTextBoxK.Mask = "0.000";
-            this.maskedTextBoxK.Name = "maskedTextBoxK";
-            this.maskedTextBoxK.Size = new System.Drawing.Size(68, 26);
-            this.maskedTextBoxK.TabIndex = 18;
-            // 
-            // btnRunK
-            // 
-            this.btnRunK.BackgroundImage = global::SignClassification.Properties.Resources.media_play_green;
-            this.btnRunK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnRunK.Location = new System.Drawing.Point(365, 3);
-            this.btnRunK.Name = "btnRunK";
-            this.btnRunK.Size = new System.Drawing.Size(31, 35);
-            this.btnRunK.TabIndex = 17;
-            this.btnRunK.UseVisualStyleBackColor = true;
-            this.btnRunK.Click += new System.EventHandler(this.btnRunK_Click);
-            // 
-            // btnKLeft
-            // 
-            this.btnKLeft.BackgroundImage = global::SignClassification.Properties.Resources.arrow1600_2;
-            this.btnKLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnKLeft.Location = new System.Drawing.Point(402, 3);
-            this.btnKLeft.Name = "btnKLeft";
-            this.btnKLeft.Size = new System.Drawing.Size(31, 35);
-            this.btnKLeft.TabIndex = 16;
-            this.btnKLeft.UseVisualStyleBackColor = true;
-            this.btnKLeft.Click += new System.EventHandler(this.btnKLeft_Click);
-            // 
-            // btnKRight
-            // 
-            this.btnKRight.BackgroundImage = global::SignClassification.Properties.Resources.arrow1600;
-            this.btnKRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnKRight.Location = new System.Drawing.Point(439, 3);
-            this.btnKRight.Name = "btnKRight";
-            this.btnKRight.Size = new System.Drawing.Size(31, 35);
-            this.btnKRight.TabIndex = 15;
-            this.btnKRight.UseVisualStyleBackColor = true;
-            this.btnKRight.Click += new System.EventHandler(this.btnKRight_Click);
-            // 
-            // pictureBoxIntervals
-            // 
-            this.pictureBoxIntervals.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBoxIntervals.Location = new System.Drawing.Point(12, 172);
-            this.pictureBoxIntervals.Name = "pictureBoxIntervals";
-            this.pictureBoxIntervals.Size = new System.Drawing.Size(1450, 50);
-            this.pictureBoxIntervals.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxIntervals.TabIndex = 11;
-            this.pictureBoxIntervals.TabStop = false;
-            this.pictureBoxIntervals.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(974, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(147, 20);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Устойчивая точка";
-            // 
-            // pictureStablePoint
-            // 
-            this.pictureStablePoint.Location = new System.Drawing.Point(978, 43);
-            this.pictureStablePoint.Name = "pictureStablePoint";
-            this.pictureStablePoint.Size = new System.Drawing.Size(50, 50);
-            this.pictureStablePoint.TabIndex = 9;
-            this.pictureStablePoint.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 20);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Макс. масштаб";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 20);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Мин. масштаб";
-            // 
-            // textBoxMaxMu
-            // 
-            this.textBoxMaxMu.Location = new System.Drawing.Point(147, 58);
-            this.textBoxMaxMu.Name = "textBoxMaxMu";
-            this.textBoxMaxMu.Size = new System.Drawing.Size(91, 26);
-            this.textBoxMaxMu.TabIndex = 4;
-            this.textBoxMaxMu.Text = "1.4";
-            // 
-            // textBoxMinMu
-            // 
-            this.textBoxMinMu.Location = new System.Drawing.Point(147, 26);
-            this.textBoxMinMu.Name = "textBoxMinMu";
-            this.textBoxMinMu.Size = new System.Drawing.Size(91, 26);
-            this.textBoxMinMu.TabIndex = 3;
-            this.textBoxMinMu.Text = "0.8";
-            // 
-            // textBoxLog
-            // 
-            this.textBoxLog.Location = new System.Drawing.Point(386, 22);
-            this.textBoxLog.Multiline = true;
-            this.textBoxLog.Name = "textBoxLog";
-            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(582, 144);
-            this.textBoxLog.TabIndex = 2;
-            // 
-            // buttonCalc
-            // 
-            this.buttonCalc.Location = new System.Drawing.Point(17, 90);
-            this.buttonCalc.Name = "buttonCalc";
-            this.buttonCalc.Size = new System.Drawing.Size(221, 32);
-            this.buttonCalc.TabIndex = 1;
-            this.buttonCalc.Text = "Расчет ";
-            this.buttonCalc.UseVisualStyleBackColor = true;
-            this.buttonCalc.Click += new System.EventHandler(this.buttonCalc_Click);
             // 
             // panel1
             // 
@@ -573,41 +474,200 @@
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.Name = "chart1";
-            series4.BorderWidth = 3;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Энтропии";
-            this.chart1.Series.Add(series4);
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Энтропии";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(1494, 164);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
-            // chart2
+            // panel2
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea3);
-            this.chart2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            legend3.Name = "Legend1";
-            this.chart2.Legends.Add(legend3);
-            this.chart2.Location = new System.Drawing.Point(3, 650);
-            this.chart2.Name = "chart2";
-            series3.BorderWidth = 3;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "Энтропии";
-            this.chart2.Series.Add(series3);
-            this.chart2.Size = new System.Drawing.Size(1494, 164);
-            this.chart2.TabIndex = 31;
-            this.chart2.Text = "chart2";
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.flowLayoutPanel2);
+            this.panel2.Controls.Add(this.pictureBoxIntervals);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.pictureStablePoint);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.textBoxMaxMu);
+            this.panel2.Controls.Add(this.textBoxMinMu);
+            this.panel2.Controls.Add(this.textBoxLog);
+            this.panel2.Controls.Add(this.buttonCalc);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1494, 248);
+            this.panel2.TabIndex = 9;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoSize = true;
+            this.flowLayoutPanel2.Controls.Add(this.label7);
+            this.flowLayoutPanel2.Controls.Add(this.maskedTextBoxK);
+            this.flowLayoutPanel2.Controls.Add(this.btnRunK);
+            this.flowLayoutPanel2.Controls.Add(this.btnKLeft);
+            this.flowLayoutPanel2.Controls.Add(this.btnKRight);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(978, 99);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(473, 41);
+            this.flowLayoutPanel2.TabIndex = 14;
+            this.flowLayoutPanel2.WrapContents = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(282, 41);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Задать масштабный коэффициент";
+            // 
+            // maskedTextBoxK
+            // 
+            this.maskedTextBoxK.Location = new System.Drawing.Point(291, 3);
+            this.maskedTextBoxK.Mask = "0.000";
+            this.maskedTextBoxK.Name = "maskedTextBoxK";
+            this.maskedTextBoxK.Size = new System.Drawing.Size(68, 26);
+            this.maskedTextBoxK.TabIndex = 18;
+            // 
+            // btnRunK
+            // 
+            this.btnRunK.BackgroundImage = global::SignClassification.Properties.Resources.media_play_green;
+            this.btnRunK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRunK.Location = new System.Drawing.Point(365, 3);
+            this.btnRunK.Name = "btnRunK";
+            this.btnRunK.Size = new System.Drawing.Size(31, 35);
+            this.btnRunK.TabIndex = 17;
+            this.btnRunK.UseVisualStyleBackColor = true;
+            this.btnRunK.Click += new System.EventHandler(this.btnRunK_Click);
+            // 
+            // btnKLeft
+            // 
+            this.btnKLeft.BackgroundImage = global::SignClassification.Properties.Resources.arrow1600_2;
+            this.btnKLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnKLeft.Location = new System.Drawing.Point(402, 3);
+            this.btnKLeft.Name = "btnKLeft";
+            this.btnKLeft.Size = new System.Drawing.Size(31, 35);
+            this.btnKLeft.TabIndex = 16;
+            this.btnKLeft.UseVisualStyleBackColor = true;
+            this.btnKLeft.Click += new System.EventHandler(this.btnKLeft_Click);
+            // 
+            // btnKRight
+            // 
+            this.btnKRight.BackgroundImage = global::SignClassification.Properties.Resources.arrow1600;
+            this.btnKRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnKRight.Location = new System.Drawing.Point(439, 3);
+            this.btnKRight.Name = "btnKRight";
+            this.btnKRight.Size = new System.Drawing.Size(31, 35);
+            this.btnKRight.TabIndex = 15;
+            this.btnKRight.UseVisualStyleBackColor = true;
+            this.btnKRight.Click += new System.EventHandler(this.btnKRight_Click);
+            // 
+            // pictureBoxIntervals
+            // 
+            this.pictureBoxIntervals.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBoxIntervals.Location = new System.Drawing.Point(12, 172);
+            this.pictureBoxIntervals.Name = "pictureBoxIntervals";
+            this.pictureBoxIntervals.Size = new System.Drawing.Size(1450, 50);
+            this.pictureBoxIntervals.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxIntervals.TabIndex = 11;
+            this.pictureBoxIntervals.TabStop = false;
+            this.pictureBoxIntervals.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(974, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(147, 20);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Устойчивая точка";
+            // 
+            // pictureStablePoint
+            // 
+            this.pictureStablePoint.Location = new System.Drawing.Point(978, 43);
+            this.pictureStablePoint.Name = "pictureStablePoint";
+            this.pictureStablePoint.Size = new System.Drawing.Size(50, 50);
+            this.pictureStablePoint.TabIndex = 9;
+            this.pictureStablePoint.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(123, 20);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Макс. масштаб";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(116, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Мин. масштаб";
+            // 
+            // textBoxMaxMu
+            // 
+            this.textBoxMaxMu.Location = new System.Drawing.Point(147, 58);
+            this.textBoxMaxMu.Name = "textBoxMaxMu";
+            this.textBoxMaxMu.Size = new System.Drawing.Size(91, 26);
+            this.textBoxMaxMu.TabIndex = 4;
+            this.textBoxMaxMu.Text = "1.4";
+            // 
+            // textBoxMinMu
+            // 
+            this.textBoxMinMu.Location = new System.Drawing.Point(147, 26);
+            this.textBoxMinMu.Name = "textBoxMinMu";
+            this.textBoxMinMu.Size = new System.Drawing.Size(91, 26);
+            this.textBoxMinMu.TabIndex = 3;
+            this.textBoxMinMu.Text = "0.8";
+            // 
+            // textBoxLog
+            // 
+            this.textBoxLog.Location = new System.Drawing.Point(386, 22);
+            this.textBoxLog.Multiline = true;
+            this.textBoxLog.Name = "textBoxLog";
+            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxLog.Size = new System.Drawing.Size(582, 144);
+            this.textBoxLog.TabIndex = 2;
+            // 
+            // buttonCalc
+            // 
+            this.buttonCalc.Location = new System.Drawing.Point(17, 90);
+            this.buttonCalc.Name = "buttonCalc";
+            this.buttonCalc.Size = new System.Drawing.Size(221, 32);
+            this.buttonCalc.TabIndex = 1;
+            this.buttonCalc.Text = "Расчет ";
+            this.buttonCalc.UseVisualStyleBackColor = true;
+            this.buttonCalc.Click += new System.EventHandler(this.buttonCalc_Click);
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.label10);
+            this.flowLayoutPanel3.Controls.Add(this.textBoxMinM);
+            this.flowLayoutPanel3.Controls.Add(this.label9);
+            this.flowLayoutPanel3.Controls.Add(this.textBoxMaxM);
+            this.flowLayoutPanel3.Controls.Add(this.groupBox1);
+            this.flowLayoutPanel3.Controls.Add(this.buttonLoadImage);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(12, 48);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(232, 169);
+            this.flowLayoutPanel3.TabIndex = 34;
             // 
             // Form1
             // 
@@ -621,15 +681,12 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBoxH.ResumeLayout(false);
+            this.groupBoxH.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIntervals)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureStablePoint)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -641,7 +698,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIntervals)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureStablePoint)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -693,6 +757,11 @@
         private System.Windows.Forms.RadioButton rBYes;
         private System.Windows.Forms.TextBox textBoxLogSP;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.GroupBox groupBoxH;
+        private System.Windows.Forms.RadioButton radioButtonMaxDH;
+        private System.Windows.Forms.RadioButton radioButtonMaxH;
+        private System.Windows.Forms.Button buttonSP;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
     }
 }
 

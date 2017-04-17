@@ -14,6 +14,7 @@ namespace SignClassification
         private SignImage im;
         private List<SignImage> collectionList;
         private List<Split> splitsList;
+        private double[] m2;
         public Form1()
         {
             InitializeComponent();
@@ -44,21 +45,11 @@ namespace SignClassification
                     collectionList.Add(new SignImage(file));
                 }
             }
-            double m = FindBetterStablePoint();
-            //Генерируем новые W и B или используем из файла
-            classifier = rBNo.Checked == true ? new Classifier(collectionList[0]) : new Classifier(collectionList[0], Read2DArray("w.txt"), ReadArray("b.txt"),m);
-
-            textBoxLog.Text += classifier.LogStr;
-            im = new SignImage();
-            pictureStablePoint.Image = im.CreateImage(classifier.StablePoint);
-
-            pictureBoxIntervals.BackColor = Color.White;
-            pictureBoxIntervals.Visible = true;
-            pictureBoxIntervals.Paint += this.pictureBoxIntervals_Paint;
-
+            m2 = FindBetterStablePoint();
+            //m2 = new double[]{1, 1};
         }
 
-        private double FindBetterStablePoint()
+        private double[] FindBetterStablePoint()
         {
             List<Split> stableSplits = new List<Split>();
             double[,] w = Read2DArray("w.txt");
@@ -83,10 +74,10 @@ namespace SignClassification
                 stableSplits.Add(split);
                 foreach (var image in collectionList)
                 {
-                    image.Distance = classifier.EuclideanDistance(image.Brightness);
+                    double distance = classifier.EuclideanDistance(image.Brightness);
                     foreach (var claster in split.Clasters)
                     {
-                        if (image.Distance <= claster.Interval[1])
+                        if (distance <= claster.Interval[1])
                         {
                             claster.BmpList.Add(image);
                             break;
@@ -95,9 +86,11 @@ namespace SignClassification
                 }
             });
             double[] y = new double[stableSplits.Count];
-            double buf = 0, splitNumber = 0;
+            double buf = 0, splitNumber = 0, maxDH = 0;
+            int splitDHNumber = 0;
+            stableSplits[0].GenerateH(collectionList.Count);
             //Вычисляем наибольший перепад энтропий
-            for (int i = 0; i < stableSplits.Count; i++)
+            for (int i = 1; i < stableSplits.Count; i++)
             {
                 stableSplits[i].GenerateH(collectionList.Count);
                 y[i] = stableSplits[i].H;
@@ -106,7 +99,13 @@ namespace SignClassification
                     buf = stableSplits[i].H;
                     splitNumber = i;
                 }
+                var bufDH = Math.Abs(stableSplits[i].H - stableSplits[i - 1].H) / (x[i] - x[i - 1]);
+                if (bufDH < maxDH) continue;
+                maxDH = bufDH;
+                if (stableSplits[i].H < stableSplits[i - 1].H) splitDHNumber = i;
+                else splitDHNumber = i - 1;
             }
+
             chart2.ChartAreas[0].AxisX.Minimum = x[0];
             chart2.ChartAreas[0].AxisX.Maximum = x[x.Count-1];
             chart2.ChartAreas[0].AxisX.MajorGrid.Interval = step;
@@ -115,7 +114,8 @@ namespace SignClassification
 
             m = minM + splitNumber * step;
             textBoxLogSP.Text += "Максимальная энтропия достигается при масштабе " + m + Environment.NewLine;
-            return m;
+            textBoxLogSP.Text += "Максимальный перепад энтропий достигается при масштабе " + x[splitDHNumber].ToString() + Environment.NewLine;
+            return new double[] {m, x[splitDHNumber]};
         }
 
         private void buttonCalc_Click(object sender, EventArgs e)
@@ -126,17 +126,17 @@ namespace SignClassification
             dataGridView2.Columns.Clear();
 
             splitsList = new List<Split>();
-            double m = double.Parse(textBoxMinMu.Text);
+            double mu = double.Parse(textBoxMinMu.Text);
             int j = 0;
             const double step = 0.05;
             //Формируем класстеры, меняя масштаб данных
-            double maxM = double.Parse(textBoxMaxMu.Text);
-            while(m <= maxM+step/2.0)
+            double maxMu = double.Parse(textBoxMaxMu.Text);
+            while(mu <= maxMu + step/2.0)
             {
-                splitsList.Add(new Split(classifier.Split.Clasters, m));
+                splitsList.Add(new Split(classifier.Split.Clasters, mu));
                 foreach (var image in collectionList)
                 {
-                    image.Distance = classifier.EuclideanDistance(image.GetNewBrightness(m));
+                    image.Distance = classifier.EuclideanDistance(image.GetNewBrightness(mu));
                     foreach (var claster in splitsList[j].Clasters)
                     {
                         if (image.Distance <= claster.Interval[1])
@@ -148,7 +148,7 @@ namespace SignClassification
                     }
                 }
                 j++;
-                m += step;
+                mu += step;
             }
 
             List<double> x = new List<double>();
@@ -327,7 +327,7 @@ namespace SignClassification
         private void btnMuRight_Click(object sender, EventArgs e)
         {
             double m = Double.Parse(maskedTextBoxMu.Text);
-            m += 0.1;
+            m += 0.05;
             maskedTextBoxMu.Text = m.ToString();
             btnMuRun_Click(sender, e);
         }
@@ -335,7 +335,7 @@ namespace SignClassification
         private void btnMuLeft_Click(object sender, EventArgs e)
         {
             double m = Double.Parse(maskedTextBoxMu.Text);
-            m -= 0.1;
+            m -= 0.05;
             maskedTextBoxMu.Text = m.ToString();
             btnMuRun_Click(sender, e);
         }
@@ -356,16 +356,14 @@ namespace SignClassification
             textBoxLog.Text += "Коэффициент сжатия отображения K: " + Math.Round(classifier.K, 5)+ Environment.NewLine;
             textBoxLog.Text += "Количество диапазонов эвклидовых расстояний: " + classifier.Split.Clasters.Count+ Environment.NewLine;
 
-            //pictureBoxIntervals.Width = (int)(50 + 10 * Math.Round(classifier.Split.Clasters[classifier.Split.Clasters.Count - 1].Interval[1]));
             pictureBoxIntervals_Paint(sender, new PaintEventArgs(pictureBoxIntervals.CreateGraphics(),pictureBoxIntervals.Bounds));
-
         }
 
         private void btnKRight_Click(object sender, EventArgs e)
         {
             double k = Double.Parse(maskedTextBoxK.Text);
             k += 0.005;
-            maskedTextBoxMu.Text = k.ToString();
+            maskedTextBoxK.Text = k.ToString();
             btnRunK_Click(sender, e);
         }
 
@@ -373,8 +371,24 @@ namespace SignClassification
         {
             double k = Double.Parse(maskedTextBoxK.Text);
             k -= 0.005;
-            maskedTextBoxMu.Text = k.ToString();
+            maskedTextBoxK.Text = k.ToString();
             btnRunK_Click(sender, e);
+        }
+
+        private void buttonSP_Click(object sender, EventArgs e)
+        {
+            double m = m2[0];
+            if (radioButtonMaxDH.Checked == true) m = m2[1];
+            //Генерируем новые W и B или используем из файла
+            classifier = rBNo.Checked == true ? new Classifier(collectionList[0]) : new Classifier(collectionList[0], Read2DArray("w.txt"), ReadArray("b.txt"), m);
+
+            textBoxLog.Text += classifier.LogStr;
+            im = new SignImage();
+            pictureStablePoint.Image = im.CreateImage(classifier.StablePoint);
+
+            pictureBoxIntervals.BackColor = Color.White;
+            pictureBoxIntervals.Visible = true;
+            pictureBoxIntervals.Paint += this.pictureBoxIntervals_Paint;
         }
     }
 }

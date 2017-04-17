@@ -73,7 +73,7 @@ namespace SignClassification
 
         public Bitmap CreateImage(double[] brightness)
         {
-            Bitmap bmp = new Bitmap("d:\\обучение\\Распознавание знаков\\signs\\знаки\\image.bmp");
+            Bitmap bmp = new Bitmap("stablePoint.bmp");
             int k = 0;
             double[] br = new double[brightness.Length];
             Array.Copy(brightness,br,brightness.Length);
@@ -87,7 +87,6 @@ namespace SignClassification
                     k++;
                 }
             }
-            //bmp.Save("d:\\обучение\\Распознавание знаков\\signs\\искуственные знаки\\image2.bmp");
             return bmp;
         }
     }
